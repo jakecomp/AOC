@@ -9,9 +9,9 @@ def parse_input(path)
   return left_list, right_list
 end
 
-
-def total_distance_calc()
-  left_list, right_list = parse_input(File.join(Dir.pwd,"input.txt"))
+# Part 1
+def total_distance_calc(filename)
+  left_list, right_list = parse_input(File.join(Dir.pwd,filename))
 
   total_distance = 0
 
@@ -19,33 +19,26 @@ def total_distance_calc()
   right_list.sort!
 
   left_list.each_with_index do |left, index|
-    right = right_list[index]
-    total_distance += (right - left).abs
+    total_distance += (right_list[index] - left).abs
   end
   return total_distance
 end
 
-def similarity_calc()
-  left_list, right_list = parse_input(File.join(Dir.pwd,"input.txt"))
-  right_count = {}
+# Part 2
+def similarity_calc(filename)
+  left_list, right_list = parse_input(File.join(Dir.pwd,filename))
+  right_count = Hash.new(0)
 
   right_list.each do |right|
-    if right_count[right]
-      right_count[right] += 1
-    else
-      right_count[right] = 1
-    end
+    right_count[right] +=1
   end
 
   total_similarity = 0
   left_list.each do |left|
-    if right_count[left]
-      total_similarity += left * right_count[left]
-    end
+    total_similarity += left * right_count[left]
   end
   return total_similarity
 end
 
-puts total_distance_calc()
-puts similarity_calc()
-
+puts total_distance_calc("input.txt")
+puts similarity_calc("input.txt")
