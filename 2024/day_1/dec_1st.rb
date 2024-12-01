@@ -11,7 +11,7 @@ end
 
 
 def total_distance_calc()
-  left_list, right_list = parse_input("/mnt/c/Users/jake1/AOC/2024/day_1/input.txt")
+  left_list, right_list = parse_input(File.join(Dir.pwd,"input.txt"))
 
   total_distance = 0
 
@@ -26,7 +26,7 @@ def total_distance_calc()
 end
 
 def similarity_calc()
-  left_list, right_list = parse_input("/mnt/c/Users/jake1/AOC/2024/day_1/input.txt")
+  left_list, right_list = parse_input(File.join(Dir.pwd,"input.txt"))
   right_count = {}
 
   right_list.each do |right|
