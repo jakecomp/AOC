@@ -31,19 +31,7 @@ end
 
 
 def is_safe(report)
-  increasing = report.each_cons(2).all? { |a, b| a >= b }
-  decreasing = report.each_cons(2).all? { |a, b| a <= b }
-  if !increasing && !decreasing
-    return false
-  end
-
-  for i in 0..report.length-2
-    diff = report[i] - report[i+1]
-    if diff.abs == 0 || diff.abs > 3
-      return false
-    end
-  end
-  return true
+  return report.each_cons(2).all? { |a, b| a >= b && (a-b).abs <= 3 && (a-b).abs > 0 } || report.each_cons(2).all? { |a, b| a <= b  && (a-b).abs <= 3 && (a-b).abs > 0 }
 end
 
 
