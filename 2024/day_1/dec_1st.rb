@@ -40,5 +40,7 @@ def similarity_calc(filename)
   return total_similarity
 end
 
-puts total_distance_calc("input.txt")
-puts similarity_calc("input.txt")
+if __FILE__ == $0
+  puts total_distance_calc("input.txt")
+  puts similarity_calc("input.txt")
+end
